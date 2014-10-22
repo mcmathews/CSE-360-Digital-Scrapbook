@@ -3,20 +3,20 @@ package edu.asu.scrapbook.digital.dao;
 import edu.asu.scrapbook.digital.model.User;
 
 public class UserDAOImpl implements UserDAO {
-	public User findById() throws Exception {
+	public User findById(String id) throws Exception {
 		User newUser = new User();
 		return newUser;
 	}
 	
-	public void create() throws Exception {
-		
+	public User create(User user) throws Exception {
+		return null;
 	}
 	
-	public void update() throws Exception {
-		
+	public User update(User user) throws Exception {
+		return null;
 	}
 	
-	public void delete() throws Exception {
+	public void delete(String id) throws Exception {
 		
 	}
 }
