@@ -40,8 +40,8 @@ public class UserResource {
 			UserDAO dao = UserDAOFactory.getInstance();
 			try {
 				// TODO: attr checking
-				
-				return dao.create(user);
+				return user;
+				//return dao.create(user);
 			} catch (Exception e) {
 				return null;
 			}
