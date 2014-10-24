@@ -2,7 +2,7 @@ package edu.asu.scrapbook.digital.dao;
 
 import edu.asu.scrapbook.digital.model.User;
 
-public class UserDAOImpl implements UserDAO {
+public class DatastoreUserDAOImpl implements UserDAO {
 	public User findById(String id) throws Exception {
 		User newUser = new User();
 		return newUser;
