@@ -19,12 +19,16 @@
 <script src="/js/lib/jquery-2.1.1.js" type="text/javascript"></script>
 <script src="/js/lib/bootstrap.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="/css/profile-style.css" />
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
 
+    
 
 </head>
 
 <body>
         
+    <%@ include file="/include/header.jsp" %> 
+
 <div class="container" style="padding-top: 200px">
     <div class="row">
     <div class = "col-md-12">
@@ -37,8 +41,8 @@
                     <div class="col-sm-6 col-md-8">
                         <h3><span class="profile-text">User Name</span></h3>
                         <p>
-                            <i class="glyphicon glyphicon-envelope"></i> <span class="profile-text"> email@example.com</span>
-                            <br /></p>
+                    <i class="glyphicon glyphicon-envelope"></i> <span class="profile-text"> email@example.com</span>
+                        </p>
                         
                         <button class="btn btn-inverse btn-small">Edit Profile Picture</button>
                     </div>
