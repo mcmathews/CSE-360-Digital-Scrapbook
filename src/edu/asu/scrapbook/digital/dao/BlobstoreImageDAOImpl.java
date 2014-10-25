@@ -6,7 +6,7 @@ import edu.asu.scrapbook.digital.model.Image;
 import edu.asu.scrapbook.digital.model.User;
 
 public class BlobstoreImageDAOImpl implements ImageDAO {
-	public Image findById() throws Exception {
+	public Image findById(Long id) throws Exception {
 		return null;
 	}
 
