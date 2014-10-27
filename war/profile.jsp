@@ -5,17 +5,11 @@
     <meta charset="UTF-8">
     <title>profilePage</title>
 
-    <link rel="stylesheet" type="text/css" href="/css/lib/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="/css/lib/bootstrap-theme.css" />
+    <%@ include file="/include/cssimports.jsp" %>
 
-    <!-- Custom styles for this template -->
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/cover/cover.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/css/profile-style.css" />
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
 
-    <link rel="stylesheet" type="text/css" href="/css/profile-style.css" />
-    <link rel="stylesheet" type="text/css" href="/css/main.css" />
-    <script src="/js/lib/jquery-2.1.1.js" type="text/javascript"></script>
-    <script src="/js/lib/bootstrap.js" type="text/javascript"></script>
 
 
 </head>
@@ -43,7 +37,9 @@
                                         <p>
                                             <span class="profile-text">email@example.com</span>
                                         </p>
-                                        <button class="btn btn-inverse btn-small">Edit Profile Picture</button>
+                                        <a href="profile-settings.jsp">
+                                            <button class="btn btn-inverse btn-small">Edit Profile Picture</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
