@@ -47,9 +47,11 @@ public class ImageResource {
 	
 	@PUT
 	@Path("{id}/edit")
-	@Consumes(MediaType.APPLICATION_OCTET_STREAM)
-	public void editImage(byte[] imageData, @PathParam("id") long id) {
-		String username = "";// UserUtil.getRequestUsername();
+	@Consumes(MediaType.TEXT_PLAIN)
+	public void editImage(String base64ImageData, @PathParam("id") long id) {
+		String username = UserUtil.getRequestUsername();
+		
+		byte[] imageData = DatatypeConverter.parseBase64Binary(base64ImageData);
 		
 		ImageDAO imageDao = ImageDAOFactory.getInstance();
 		UserDAO userDao = UserDAOFactory.getInstance();
@@ -61,6 +63,36 @@ public class ImageResource {
 				if (image.getId() == id) {
 					ImageUtil.updateEditedImage(image, imageData);
 					break;
+				}
+			}
+			
+		} catch (Exception e) {
+			throw new InternalServerErrorException(e);
+		}
+	}
+	
+	@DELETE
+	@Path("{id}")
+	public void delete(@PathParam("id") long id) {
+		String username = UserUtil.getRequestUsername();
+		
+		ImageDAO imageDao = ImageDAOFactory.getInstance();
+		UserDAO userDao = UserDAOFactory.getInstance();
+		try {
+			User user = userDao.findById(username);
+			if (user != null) {
+				List<Image> images = imageDao.getAllImagesByUser(user);
+				Image image = images.get(0);
+				for (Iterator<Image> iter = images.iterator(); iter.hasNext(); image = iter.next()) {
+					if (image.getId() == id) {
+						BlobstoreService bs = BlobstoreServiceFactory.getBlobstoreService();
+						bs.delete(image.getBlobKey());
+						
+						iter.remove();
+						userDao.update(user);
+						
+						break;
+					}
 				}
 			}
 			
