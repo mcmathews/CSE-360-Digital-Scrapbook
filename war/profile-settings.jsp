@@ -23,15 +23,22 @@
 
 
                 <div class="col-md-12">
-                        <h2><span class = "test">Upload New Profile Photo</span></h2> 
-
+                        <h2>Upload New Profile Photo</h2> 
+                    
+                    
+                    <form action="{%=uploadUrl}" method="get">
+                        
+                        <input value="true" type="hidden" name="isProfileImage" />
+                        
                         <div class="button-move">
-                            <div class="center-input"><input type="file"/></div>
+                            <div class="center-input"> 
+                                <input type="file"/>
+                            </div>
                         </div>
                         <div class="button-move">
-                            <a href="#" class="btn btn-default">Save Profile Image</a>
+                            <button type="submit" class="btn btn-default">Save Profile Image</button>
                         </div>
-
+                    </form>
 
                 </div>
             </div>
