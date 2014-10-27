@@ -44,7 +44,7 @@
                                 </div>
                             </div>
 
-                            <a href="#" class="btn btn-default btn-lg">Upload A Photo To Your ScrapBook</a>
+                            <a href="upload-image.jsp" class="btn btn-default btn-lg">Upload A Photo To                               Your ScrapBook</a>
                         </div>
                     </div>
                     <div class="col-md-6">
