@@ -18,9 +18,9 @@ public class BookServlet extends HttpServlet {
 		String forwardUrl = null;
 		try {
 			if (UserUtil.userExists(username)) {
-				forwardUrl = "/WEB-INF/view/book.jsp";
+				forwardUrl = "/profile.jsp";
 			} else {
-				forwardUrl = "/WEB-INF/view/signup.jsp";
+				forwardUrl = "/signup.jsp";
 			}
 			
 			request.getRequestDispatcher(forwardUrl).forward(request, response);
