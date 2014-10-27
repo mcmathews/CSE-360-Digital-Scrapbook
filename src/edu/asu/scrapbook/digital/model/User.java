@@ -1,7 +1,11 @@
 package edu.asu.scrapbook.digital.model;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
 public class User {
-	private String username;
+	@Id private String username;
 	private ProfileSettings settings;
 	
 	public User() {}
