@@ -1,10 +1,17 @@
 package edu.asu.scrapbook.digital.model;
 
+import com.google.appengine.api.blobstore.BlobKey;
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
 public class Image {
 	
-	private Long id;
+	@Id private Long id;
 	private String title;
 	private String filename;
+	private String datastoreLink;
+	private BlobKey blobKey;
 	
 	public Long getId() {
 		return id;
@@ -28,5 +35,21 @@ public class Image {
 	
 	public void setFilename(String filename) {
 		this.filename = filename;
+	}
+
+	public String getDatastoreLink() {
+		return datastoreLink;
+	}
+
+	public void setDatastoreLink(String datastoreLink) {
+		this.datastoreLink = datastoreLink;
+	}
+
+	public BlobKey getBlobKey() {
+		return blobKey;
+	}
+
+	public void setBlobKey(BlobKey blobKey) {
+		this.blobKey = blobKey;
 	}
 }

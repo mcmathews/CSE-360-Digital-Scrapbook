@@ -1,7 +1,7 @@
 package edu.asu.scrapbook.digital.dao;
 
 import edu.asu.scrapbook.digital.model.User;
-import static com.googlecode.objectify.ObjectifyService.ofy;
+import static edu.asu.scrapbook.digital.dao.OfyService.ofy;
 
 public class DatastoreUserDAOImpl implements UserDAO {
 	public User findById(String id) throws Exception {
@@ -10,18 +10,18 @@ public class DatastoreUserDAOImpl implements UserDAO {
 	}
 	
 	public User create(User user) throws Exception {
-		ofy().save().entity(user);
-		return null;
+		ofy().save().entity(user).now();
+		return ofy().load().type(User.class).id(user.getUsername()).now();
 	}
 	
 	public User update(User user) throws Exception {
 		User updatedUser = ofy().load().type(User.class).id(user.getUsername()).now();
 		updatedUser.setSettings(user.getSettings());
-		ofy().save().entity(updatedUser);
-		return null;
+		ofy().save().entity(updatedUser).now();
+		return ofy().load().type(User.class).id(user.getUsername()).now();
 	}
 	
 	public void delete(String id) throws Exception {
-		ofy().delete().type(User.class).id(id);
+		ofy().delete().type(User.class).id(id).now();
 	}
 }
