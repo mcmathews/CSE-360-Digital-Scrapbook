@@ -1,10 +1,12 @@
 package edu.asu.scrapbook.digital.model;
 
+import com.googlecode.objectify.Ref;
+
 public class ProfileSettings {
 	
 	private String firstName;
 	private String lastName;
-	private Image profileImage;
+	private Ref<Image> profileImageRef;
 	
 	public String getFirstName() {
 		return firstName;
@@ -23,10 +25,10 @@ public class ProfileSettings {
 	}
 	
 	public Image getProfileImage() {
-		return profileImage;
+		return (profileImageRef != null) ? profileImageRef.get() : null;
 	}
 	
 	public void setProfileImage(Image profileImage) {
-		this.profileImage = profileImage;
+		this.profileImageRef = (profileImage != null) ? Ref.create(profileImage) : null;
 	}
 }

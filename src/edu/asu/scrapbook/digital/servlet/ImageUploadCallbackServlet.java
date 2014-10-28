@@ -63,8 +63,11 @@ public class ImageUploadCallbackServlet extends HttpServlet {
 			
 			if (isProfileImage) {
 				if (user.getSettings().getProfileImage() != null) {
-					blobstoreService.delete(user.getSettings().getProfileImage().getBlobKey());
+					Image oldProfileImage = user.getSettings().getProfileImage();
+					blobstoreService.delete(oldProfileImage.getBlobKey());
+					imageDao.delete(oldProfileImage.getId());
 				}
+				imageDao.create(image);
 				user.getSettings().setProfileImage(image);
 				userDao.update(user);
 				
