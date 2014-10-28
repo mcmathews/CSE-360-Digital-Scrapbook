@@ -80,6 +80,8 @@ public class ImageUploadCallbackServlet extends HttpServlet {
 				userDao.update(user);
 			}
 			
+			response.sendRedirect("/profile.jsp");
+			
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
