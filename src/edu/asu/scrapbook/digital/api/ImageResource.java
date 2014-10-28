@@ -31,7 +31,7 @@ public class ImageResource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Image> getUserImageIds() {
+	public List<Image> getUserImages() {
 		String username = UserUtil.getRequestUsername();
 		
 		ImageDAO imageDao = ImageDAOFactory.getInstance();
