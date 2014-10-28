@@ -18,7 +18,7 @@ import edu.asu.scrapbook.digital.model.Image;
 
 public class ImageUtil {
 	
-	public static String UPLOAD_CALLBACK_URL = "/book/image";
+	public static String UPLOAD_CALLBACK_URL = "/book/uploadCallback";
 	
 	public static void updateEditedImage(Image image, byte[] imageData) {
 		BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
