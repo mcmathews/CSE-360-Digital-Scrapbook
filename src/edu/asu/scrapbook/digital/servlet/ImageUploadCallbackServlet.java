@@ -49,7 +49,8 @@ public class ImageUploadCallbackServlet extends HttpServlet {
 				image = imageDao.findById(id);
 			} else {
 				image = new Image();
-				image.setFilename(request.getParameter("filename"));
+				String filename = blobstoreService.getFileInfos(request).get("image").get(0).getFilename();
+				image.setFilename(filename);
 				image.setTitle(request.getParameter("title"));
 			}
 			
