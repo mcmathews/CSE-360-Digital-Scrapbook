@@ -2,6 +2,7 @@ package edu.asu.scrapbook.digital.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
@@ -10,6 +11,8 @@ import com.googlecode.objectify.annotation.Id;
 public class User {
 	@Id private String username;
 	private ProfileSettings settings;
+	
+	@JsonIgnore
 	private List<Ref<Image>> images;
 	
 	public User() {}
