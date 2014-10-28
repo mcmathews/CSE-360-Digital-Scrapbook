@@ -7,7 +7,6 @@
 
     <%@ include file="/include/cssimports.jsp" %>
 
-
 </head>
 
 <body>
@@ -22,7 +21,7 @@
                     <h1 class="cover-heading">Welcome To MyDigitalScrapBook.</h1>
                     <p class="lead">MyDigitalScrapBook is a free, safe, and convenient way to share photos with your friends and family, without the drama that comes with other social sites. Just click the log in button below to start uploading, editing, and storing your precious memories.
                         <p style="padding-top:10px" class="lead">
-                            <a class="btn btn-lg btn-default">Log In or Sign Up With Google</a>
+                            <a href="/book" class="btn btn-lg btn-default">Log In or Sign Up With Google</a>
                         </p>
                 </div>
 
