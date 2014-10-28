@@ -8,3 +8,4 @@
 
     <script src="/js/lib/jquery-2.1.1.js" type="text/javascript"></script>
     <script src="/js/lib/bootstrap.js" type="text/javascript"></script>
+    <script src="/js/lib/knockout-3.2.0.min.js" type="text/javascript"></script>
