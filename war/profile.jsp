@@ -25,7 +25,7 @@
 
 
                 <div class="col-md-12">
-                    <div clas="col-md-6">
+                    <div class="col-md-6">
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="well well-sm">
                                 <div class="row">
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
 
-                            <a href="upload-image.jsp" class="btn btn-default btn-lg">Upload A Photo To                               Your ScrapBook</a>
+                            <a href="/book/upload" class="btn btn-default btn-lg">Upload A Photo To Your ScrapBook</a>
                         </div>
                     </div>
                     <div class="col-md-6">
