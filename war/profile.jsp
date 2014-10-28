@@ -30,7 +30,7 @@
 						<div class="well well-sm">
 							<div class="row">
 								<div class="col-sm-6 col-md-4">
-									<img data-bind="attr { src: settings.profileImage.datastoreLink }" alt="" class="img-rounded img-responsive" />
+									<img data-bind="attr: { src: settings.profileImage.datastoreLink }" alt="" class="img-rounded img-responsive" />
 								</div>
 								<div class="col-sm-6 col-md-8">
 									<h3>
