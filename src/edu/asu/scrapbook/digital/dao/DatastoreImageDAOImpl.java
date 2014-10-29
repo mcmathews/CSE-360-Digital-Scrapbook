@@ -27,12 +27,12 @@ public class DatastoreImageDAOImpl implements ImageDAO {
 
 	public Image create(Image image) throws Exception {
 		ofy().save().entity(image).now();
-		return ofy().load().type(Image.class).id(image.getId()).now();
+		return image;
 	}
 
 	public Image update(Image image) throws Exception {
 		ofy().save().entity(image).now();
-		return ofy().load().type(Image.class).id(image.getId()).now();
+		return image;
 	}
 
 	public void delete(Long id) throws Exception {

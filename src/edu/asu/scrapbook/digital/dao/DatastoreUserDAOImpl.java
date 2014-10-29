@@ -11,14 +11,14 @@ public class DatastoreUserDAOImpl implements UserDAO {
 	
 	public User create(User user) throws Exception {
 		ofy().save().entity(user).now();
-		return ofy().load().type(User.class).id(user.getUsername()).now();
+		return user;
 	}
 	
 	public User update(User user) throws Exception {
 		User updatedUser = ofy().load().type(User.class).id(user.getUsername()).now();
 		updatedUser.setSettings(user.getSettings());
 		ofy().save().entity(updatedUser).now();
-		return ofy().load().type(User.class).id(user.getUsername()).now();
+		return user;
 	}
 	
 	public void delete(String id) throws Exception {
