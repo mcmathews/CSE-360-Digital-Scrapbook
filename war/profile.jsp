@@ -34,9 +34,9 @@
                                     </div>
                                     <div class="col-sm-6 col-md-8">
                                         <h3>
-										<span class="profile-text" data-bind="text: settings.firstName"></span> 
-										<span class="profile-text" data-bind="text: settings.lastName"></span>
-									</h3>
+											<span class="profile-text" data-bind="text: settings.firstName"></span> 
+											<span class="profile-text" data-bind="text: settings.lastName"></span>
+										</h3>
                                         <p>
                                             <span class="profile-text" data-bind="text: username"></span>
                                         </p>
@@ -47,36 +47,35 @@
                                 </div>
                             </div>
 
-                            <a href="/book/upload" class="btn btn-default btn-lg">Upload A
-							Photo To Your ScrapBook</a>
+                            <a href="/book/upload" class="btn btn-default btn-lg">Upload A Photo To Your ScrapBook</a>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 image-grid" data-bind="foreach: images">
+	
+						<!-- Thumbnail link for lion image -->
+						<div class="col-md-4 image-holder">
+							<span data-toggle="modal" data-target=".image-popup">
+								<img data-bind="attr: { src: datastoreLinkThumbnail, alt: title }, click: $root.popup" class="img-responsive img-rounded center-block" />
+							</span>
+						</div>
+					</div>
+					<!--  Modal content for the lion image example -->
+					<div class="modal fade image-popup" tabindex="-1" role="dialog" aria-labelledby="imageTitle" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
 
-                                <!-- Thumbnail link for lion image -->
-                                <a href="#" data-toggle="modal" data-target=".pop-up-2">
-                                    <img src="http://i.imgur.com/dtaHtds.jpg" width="150" class="img-responsive img-rounded center-block" alt="">
-                                </a>
-
-                                <!--  Modal content for the lion image example -->
-                                <div class="modal fade pop-up-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-2" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                <h4 class="modal-title" id="myLargeModalLabel-2">Lion</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img src="http://i.imgur.com/kzGVqbd.jpg" class="img-responsive img-rounded center-block" alt="">
-                                            </div>
-                                        </div>
-                                        <!-- /.modal-content -->
-                                    </div>
-                                    <!-- /.modal-dialog -->
-                                </div>
-                                <!-- /.modal mixer image -->
-                    </div>
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+									<h4 data-bind="text: modalTitle" class="modal-title" id="imageTitle"></h4>
+								</div>
+								<div class="modal-body">
+									<img data-bind="attr: { src: modalSrc }" class="img-responsive img-rounded center-block" alt="">
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
                 </div>
             </div>
         </div>
