@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>profilePage</title>
+    <title>Profile Page</title>
 
     <%@ include file="/include/cssimports.jsp" %>
 

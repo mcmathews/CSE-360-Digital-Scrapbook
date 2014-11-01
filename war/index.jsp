@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>coverPage</title>
+<title>Welcome</title>
 
 <%@ include file="/include/cssimports.jsp"%>
 
