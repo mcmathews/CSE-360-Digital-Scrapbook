@@ -1,5 +1,6 @@
 package edu.asu.scrapbook.digital.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -13,7 +14,7 @@ public class User {
 	private ProfileSettings settings;
 	
 	@JsonIgnore
-	private List<Ref<Image>> images;
+	private List<Ref<Image>> images = new ArrayList<>();
 	
 	public User() {}
 	
