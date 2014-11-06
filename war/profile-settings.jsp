@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreService" %>
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreServiceFactory" %>
+<%@ page import="edu.asu.scrapbook.digital.util.ImageUtil" %>
+<%
+	BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+	String uploadUrl = blobstoreService.createUploadUrl(ImageUtil.UPLOAD_CALLBACK_URL);
+%><!DOCTYPE html>
 <html>
 
 <head>
@@ -20,19 +26,15 @@
 
         <div class="container" style="padding-top: 100px">
             <div class="row">
-
-
                 <div class="col-md-12">
                     <h2>Upload New Profile Photo</h2> 
 
-
-                    <form action="{%=uploadUrl}" method="get">
-
-                        <input value="true" type="hidden" name="isProfileImage" />
+                    <form action="<%= uploadUrl %>" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="isProfileImage" value="true" />
 
                         <div class="button-move">
                             <div class="center-input">
-                                <input type="file" name="image"/>
+                                <input type="file" name="image" />
                             </div>
                         </div>
                         <div class="button-move">
@@ -42,7 +44,7 @@
 
                 </div>
             </div>
-
+		</div>
 </body>
 
 </html>
