@@ -37,6 +37,8 @@ public class ImageUploadCallbackServlet extends HttpServlet {
 			User user = userDao.findById(username);
 			
 			BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+			ImagesService imagesService = ImagesServiceFactory.getImagesService();
+			
 			Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(request);
 			BlobKey blobKey = blobs.get("image").get(0);
 			
@@ -47,6 +49,10 @@ public class ImageUploadCallbackServlet extends HttpServlet {
 			if (isEdit) {
 				long id = Long.parseLong(idParam);
 				image = imageDao.findById(id);
+				
+				imagesService.deleteServingUrl(image.getBlobKey());
+				blobstoreService.delete(image.getBlobKey());
+				
 			} else {
 				image = new Image();
 				String filename = blobstoreService.getFileInfos(request).get("image").get(0).getFilename();
@@ -55,8 +61,6 @@ public class ImageUploadCallbackServlet extends HttpServlet {
 			}
 			
 			image.setBlobKey(blobKey);
-			
-			ImagesService imagesService = ImagesServiceFactory.getImagesService();
 			image.setDatastoreLink(imagesService.getServingUrl(ServingUrlOptions.Builder.withBlobKey(image.getBlobKey())));
 			
 			boolean isProfileImage = request.getParameter("isProfileImage") != null;

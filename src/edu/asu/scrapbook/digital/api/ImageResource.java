@@ -3,16 +3,17 @@ package edu.asu.scrapbook.digital.api;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.InternalServerErrorException;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
-import javax.xml.bind.DatatypeConverter;
+import javax.ws.rs.core.Response;
 
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
@@ -23,7 +24,6 @@ import edu.asu.scrapbook.digital.dao.UserDAO;
 import edu.asu.scrapbook.digital.dao.UserDAOFactory;
 import edu.asu.scrapbook.digital.model.Image;
 import edu.asu.scrapbook.digital.model.User;
-import edu.asu.scrapbook.digital.util.ImageUtil;
 import edu.asu.scrapbook.digital.util.UserUtil;
 
 @Path("/images")
@@ -51,27 +51,46 @@ public class ImageResource {
 		}
 	}
 	
-	@PUT
-	@Path("{id}/edit")
-	@Consumes(MediaType.TEXT_PLAIN)
-	public void editImage(String base64ImageData, @PathParam("id") long id) {
+	@GET
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Image getImage(@PathParam("id") long id) {
 		String username = UserUtil.getRequestUsername();
-		
-		byte[] imageData = DatatypeConverter.parseBase64Binary(base64ImageData);
 		
 		ImageDAO imageDao = ImageDAOFactory.getInstance();
 		UserDAO userDao = UserDAOFactory.getInstance();
 		try {
 			User user = userDao.findById(username);
-			List<Image> userImages = imageDao.getAllImagesByUser(user);
-			
-			for (Image image : userImages) {
-				if (image.getId() == id) {
-					ImageUtil.updateEditedImage(image, imageData);
-					break;
+			if (user != null) {
+				List<Image> userImages = imageDao.getAllImagesByUser(user);
+				for (Image image : userImages) {
+					if (image.getId() == id) {
+						return image;
+					}
 				}
 			}
 			
+			return null;
+			
+		} catch (Exception e) {
+			throw new InternalServerErrorException(e);
+		}
+	}
+	
+	@GET
+	@Path("{id}/data")
+	@Produces(MediaType.APPLICATION_OCTET_STREAM)
+	public Response getImageData(@PathParam("id") long id) {
+		try {
+			Image image = getImage(id);
+			if (image != null) {
+				Client client = ClientBuilder.newClient();
+				WebTarget webResource = client.target(image.getDatastoreLink());
+				
+				return webResource.request(MediaType.APPLICATION_OCTET_STREAM).get();
+			}
+			
+			return null;
 		} catch (Exception e) {
 			throw new InternalServerErrorException(e);
 		}
