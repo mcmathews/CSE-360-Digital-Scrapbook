@@ -26,21 +26,20 @@
 			<div class="col-md-12">
 				
 				<form id="signup-form">
+                    
 					<div class="col-md-12">
 						<div class="button-move">
-							<div class="center-input">
 								<input type="text" id="firstName" name="firstName" class="form-control input-group-lg" placeholder="First name" />
-							</div>
 						</div>
 					</div>
 	
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="button-move">
 							<input type="text" id="lastName" name="lastName" class="form-control input-group-lg" placeholder="Last name" />
 						</div>
 					</div>
 	
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="button-move">
 							<input type="submit" class="btn btn-default" value="Sign Up" />
 						</div>
