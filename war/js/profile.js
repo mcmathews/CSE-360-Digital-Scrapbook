@@ -45,22 +45,30 @@ function init(data, dataType) {
 }
 
 function ViewModel() {
-	this.username = "";
+	var self = this;
 	
-	this.settings = {};
+	self.username = "";
+	
+	self.settings = {};
 
-	this.modalSrc = ko.observable();
-	this.modalTitle = ko.observable();
+	self.modalSrc = ko.observable();
+	self.modalTitle = ko.observable();
+	self.modalId = ko.observable();
+	self.editUrl = ko.computed(function () {
+		return "/edit-image.jsp?id=" + self.modalId();
+	}, self);
 	
-	this.images = [];
+	self.images = [];
 	
-	this.setDefaultProfileImage = function () {
-		this.settings.profileImage.datastoreLink = "https://gp5.googleusercontent.com/-ccHrCOypIOk/AAAAAAAAAAI/AAAAAAAAAAA/W4izi6XQshc/s48-c-k-no/photo.jpg";
-		this.settings.profileImage.title = "No profile image";
+	self.setDefaultProfileImage = function () {
+		self.settings.profileImage = {};
+		self.settings.profileImage.datastoreLink = "https://gp5.googleusercontent.com/-ccHrCOypIOk/AAAAAAAAAAI/AAAAAAAAAAA/W4izi6XQshc/s48-c-k-no/photo.jpg";
+		self.settings.profileImage.title = "No profile image";
 	};
 	
-	this.popup = function (imageObj) {
-		this.modalSrc(imageObj.datastoreLink);
-		this.modalTitle(imageObj.title);
+	self.popup = function (imageObj) {
+		self.modalSrc(imageObj.datastoreLink);
+		self.modalTitle(imageObj.title);
+		self.modalId(imageObj.id);
 	};
 }

@@ -65,7 +65,8 @@
 							<div class="modal-content">
 
 								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+									<button class="close" data-dismiss="modal" aria-hidden="true">X</button>
+									<a data-bind="attr: { href: editUrl }" class="edit">Edit</a>
 									<h4 data-bind="text: modalTitle" class="modal-title" id="imageTitle"></h4>
 								</div>
 								<div class="modal-body">
