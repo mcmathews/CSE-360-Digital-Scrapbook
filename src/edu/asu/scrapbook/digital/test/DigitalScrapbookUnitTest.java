@@ -15,7 +15,7 @@ import edu.asu.scrapbook.digital.dao.UserDAOFactory;
 import edu.asu.scrapbook.digital.model.ProfileSettings;
 import edu.asu.scrapbook.digital.model.User;
 
-public class DigitalScrapbookUnitTests {
+public class DigitalScrapbookUnitTest {
 	@Test
 	public void createUserTest() throws Exception {
 		ObjectifyService.run(new VoidWork() {
