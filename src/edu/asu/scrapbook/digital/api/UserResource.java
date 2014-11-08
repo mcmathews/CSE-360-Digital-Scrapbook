@@ -79,13 +79,6 @@ public class UserResource {
 				throw new NotFoundException();
 			}
 			
-			if (!user.getUsername().equals(updatedUser.getUsername())) {
-				if (UserUtil.userExists(updatedUser.getUsername())) {
-					throw new BadRequestException("A user already exists with that username");
-				}
-				user.setUsername(updatedUser.getUsername());
-			}
-			
 			if (updatedUser.getSettings() != null) {
 				user.setSettings(updatedUser.getSettings());
 			}
@@ -97,7 +90,7 @@ public class UserResource {
 		}
 	}
 	
-	@DELETE
+	/*@DELETE
 	public void deleteUser() {
 		String username = UserUtil.getRequestUsername();
 		
@@ -108,5 +101,5 @@ public class UserResource {
 		} catch (Exception e) {
 			throw new InternalServerErrorException(e);
 		}
-	}
+	}*/
 }
