@@ -1,9 +1,7 @@
 package edu.asu.scrapbook.digital.api;
 
-import java.util.Iterator;
 import java.util.List;
 
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.Path;
@@ -14,9 +12,6 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-import com.google.appengine.api.blobstore.BlobstoreService;
-import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 
 import edu.asu.scrapbook.digital.dao.ImageDAO;
 import edu.asu.scrapbook.digital.dao.ImageDAOFactory;
@@ -39,7 +34,6 @@ public class ImageResource {
 		try {
 			User user = userDao.findById(username);
 			List<Image> imageIds = null;
-			// user should never be null
 			if (user != null) {
 				imageIds = imageDao.getAllImagesByUser(user);
 			}
@@ -96,7 +90,7 @@ public class ImageResource {
 		}
 	}
 	
-	@DELETE
+	/*@DELETE
 	@Path("{id}")
 	public void delete(@PathParam("id") long id) {
 		String username = UserUtil.getRequestUsername();
@@ -124,5 +118,5 @@ public class ImageResource {
 		} catch (Exception e) {
 			throw new InternalServerErrorException(e);
 		}
-	}
+	}*/
 }

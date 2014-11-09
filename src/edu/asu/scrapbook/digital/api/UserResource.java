@@ -1,8 +1,8 @@
 package edu.asu.scrapbook.digital.api;
 
 import javax.ws.rs.BadRequestException;
+import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.NotFoundException;
@@ -58,6 +58,9 @@ public class UserResource {
 			}
 			
 			return dao.create(user);
+		} catch (ClientErrorException e) {
+			// Let these types of exception through
+			throw e;
 		} catch (Exception e) {
 			throw new InternalServerErrorException(e);
 		}
@@ -79,25 +82,21 @@ public class UserResource {
 				throw new NotFoundException();
 			}
 			
-			if (!user.getUsername().equals(updatedUser.getUsername())) {
-				if (UserUtil.userExists(updatedUser.getUsername())) {
-					throw new BadRequestException("A user already exists with that username");
-				}
-				user.setUsername(updatedUser.getUsername());
-			}
-			
 			if (updatedUser.getSettings() != null) {
 				user.setSettings(updatedUser.getSettings());
 			}
 			
 			return dao.update(user);
 			
+		} catch (ClientErrorException e) {
+			// Let these types of exception through
+			throw e;
 		} catch (Exception e) {
 			throw new InternalServerErrorException(e);
 		}
 	}
 	
-	@DELETE
+	/*@DELETE
 	public void deleteUser() {
 		String username = UserUtil.getRequestUsername();
 		
@@ -108,5 +107,5 @@ public class UserResource {
 		} catch (Exception e) {
 			throw new InternalServerErrorException(e);
 		}
-	}
+	}*/
 }
