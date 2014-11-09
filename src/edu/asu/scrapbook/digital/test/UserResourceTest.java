@@ -144,7 +144,7 @@ public class UserResourceTest {
 				try {
 					userDAO.create(user);
 				} catch (Exception e) {
-					throw new RuntimeException("UserDAO create failed to create initial setup user: " + e);
+					throw new RuntimeException("UserDAO failed to create initial setup user: " + e);
 				}
 				
 				assertEquals("User created was not equal to user from get", controlUser, userResource.getUser());
