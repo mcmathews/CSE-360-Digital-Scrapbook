@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AllTests" project="CSE-360-Digital-Scrapbook" tests="31" started="31" failures="0" errors="0" ignored="0">
+  <testsuite name="edu.asu.scrapbook.digital.test.AllTests" time="2.047">
+    <testsuite name="edu.asu.scrapbook.digital.test.DigitalScrapbookUnitTest" time="1.212">
+      <testcase name="createUserTest" classname="edu.asu.scrapbook.digital.test.DigitalScrapbookUnitTest" time="1.212"/>
+    </testsuite>
+    <testsuite name="edu.asu.scrapbook.digital.test.DatastoreUserTest" time="0.219">
+      <testcase name="failToUpdateUserTest" classname="edu.asu.scrapbook.digital.test.DatastoreUserTest" time="0.024"/>
+      <testcase name="failToCreateUserTest" classname="edu.asu.scrapbook.digital.test.DatastoreUserTest" time="0.024"/>
+      <testcase name="failToDeleteUserTest" classname="edu.asu.scrapbook.digital.test.DatastoreUserTest" time="0.02"/>
+      <testcase name="updateUserTest" classname="edu.asu.scrapbook.digital.test.DatastoreUserTest" time="0.05"/>
+      <testcase name="createUserTest" classname="edu.asu.scrapbook.digital.test.DatastoreUserTest" time="0.012"/>
+      <testcase name="foundUserTest" classname="edu.asu.scrapbook.digital.test.DatastoreUserTest" time="0.017"/>
+      <testcase name="findByIdEmptyStringTest" classname="edu.asu.scrapbook.digital.test.DatastoreUserTest" time="0.007"/>
+      <testcase name="userWithIdNotFoundTest" classname="edu.asu.scrapbook.digital.test.DatastoreUserTest" time="0.047"/>
+      <testcase name="deleteUserTest" classname="edu.asu.scrapbook.digital.test.DatastoreUserTest" time="0.018"/>
+    </testsuite>
+    <testsuite name="edu.asu.scrapbook.digital.test.ImageResourceTest" time="0.083">
+      <testcase name="getImageNotFoundTest" classname="edu.asu.scrapbook.digital.test.ImageResourceTest" time="0.029"/>
+      <testcase name="getUserImagesTest" classname="edu.asu.scrapbook.digital.test.ImageResourceTest" time="0.04"/>
+      <testcase name="getImageTest" classname="edu.asu.scrapbook.digital.test.ImageResourceTest" time="0.014"/>
+    </testsuite>
+    <testsuite name="edu.asu.scrapbook.digital.test.UserResourceTest" time="0.348">
+      <testcase name="testUpdateUserNotFound" classname="edu.asu.scrapbook.digital.test.UserResourceTest" time="0.297"/>
+      <testcase name="testCreateAlreadyExistingUser" classname="edu.asu.scrapbook.digital.test.UserResourceTest" time="0.01"/>
+      <testcase name="testUpdateUserNullUser" classname="edu.asu.scrapbook.digital.test.UserResourceTest" time="0.001"/>
+      <testcase name="testUpdateUser" classname="edu.asu.scrapbook.digital.test.UserResourceTest" time="0.016"/>
+      <testcase name="testGetUser" classname="edu.asu.scrapbook.digital.test.UserResourceTest" time="0.01"/>
+      <testcase name="testCreateUserNullProfileSettings" classname="edu.asu.scrapbook.digital.test.UserResourceTest" time="0.001"/>
+      <testcase name="testCreateUser" classname="edu.asu.scrapbook.digital.test.UserResourceTest" time="0.009"/>
+      <testcase name="testCreateUserNullUser" classname="edu.asu.scrapbook.digital.test.UserResourceTest" time="0.001"/>
+    </testsuite>
+    <testsuite name="edu.asu.scrapbook.digital.test.UserUtilTest" time="0.018">
+      <testcase name="testUserDoesNotExists" classname="edu.asu.scrapbook.digital.test.UserUtilTest" time="0.006"/>
+      <testcase name="testGetRequestUsernameNotSignedIn" classname="edu.asu.scrapbook.digital.test.UserUtilTest" time="0.001"/>
+      <testcase name="testGetRequestUsername" classname="edu.asu.scrapbook.digital.test.UserUtilTest" time="0.0"/>
+      <testcase name="testUserExists" classname="edu.asu.scrapbook.digital.test.UserUtilTest" time="0.011"/>
+    </testsuite>
+    <testsuite name="edu.asu.scrapbook.digital.test.DatastoreImageTest" time="0.167">
+      <testcase name="deleteimageTest" classname="edu.asu.scrapbook.digital.test.DatastoreImageTest" time="0.024"/>
+      <testcase name="foundImageTest" classname="edu.asu.scrapbook.digital.test.DatastoreImageTest" time="0.045"/>
+      <testcase name="updateImageTest" classname="edu.asu.scrapbook.digital.test.DatastoreImageTest" time="0.036"/>
+      <testcase name="imageWithIdNotFoundTest" classname="edu.asu.scrapbook.digital.test.DatastoreImageTest" time="0.02"/>
+      <testcase name="findByIdEmptyLongTest" classname="edu.asu.scrapbook.digital.test.DatastoreImageTest" time="0.015"/>
+      <testcase name="createImageTest" classname="edu.asu.scrapbook.digital.test.DatastoreImageTest" time="0.027"/>
+    </testsuite>
+  </testsuite>
+</testrun>
