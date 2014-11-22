@@ -1,8 +1,12 @@
 package edu.asu.scrapbook.digital.api;
 
+import java.net.URI;
+import java.util.List;
+
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.NotFoundException;
@@ -11,9 +15,16 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
+import com.google.appengine.api.blobstore.BlobstoreService;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+
+import edu.asu.scrapbook.digital.dao.ImageDAO;
+import edu.asu.scrapbook.digital.dao.ImageDAOFactory;
 import edu.asu.scrapbook.digital.dao.UserDAO;
 import edu.asu.scrapbook.digital.dao.UserDAOFactory;
+import edu.asu.scrapbook.digital.model.Image;
 import edu.asu.scrapbook.digital.model.User;
 import edu.asu.scrapbook.digital.util.UserUtil;
 
@@ -96,16 +107,34 @@ public class UserResource {
 		}
 	}
 	
-	/*@DELETE
+	@GET
+	@Path("/delete")
+	public Response delete() {
+		deleteUser();
+		
+		return Response.temporaryRedirect(URI.create("/")).build();
+	}
+	
+	@DELETE
 	public void deleteUser() {
 		String username = UserUtil.getRequestUsername();
 		
-		UserDAO dao = UserDAOFactory.getInstance();
+		UserDAO userDao = UserDAOFactory.getInstance();
+		ImageDAO imageDao = ImageDAOFactory.getInstance();
 		try {
-			// TODO: delete images
-			dao.delete(username);
+			User user = userDao.findById(username);
+			if (user != null) {
+				List<Image> images = imageDao.getAllImagesByUser(user);
+				BlobstoreService bs = BlobstoreServiceFactory.getBlobstoreService();
+				for (Image image : images) {
+					bs.delete(image.getBlobKey());
+					imageDao.delete(image.getId());
+				}
+			}
+			userDao.delete(username);
+			
 		} catch (Exception e) {
 			throw new InternalServerErrorException(e);
 		}
-	}*/
+	}
 }
