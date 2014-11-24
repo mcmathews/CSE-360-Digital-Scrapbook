@@ -17,6 +17,8 @@ import javax.ws.rs.core.Response;
 
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesServiceFactory;
 
 import edu.asu.scrapbook.digital.dao.ImageDAO;
 import edu.asu.scrapbook.digital.dao.ImageDAOFactory;
@@ -109,6 +111,9 @@ public class ImageResource {
 				Image image = images.get(0);
 				for (Iterator<Image> iter = images.iterator(); iter.hasNext(); image = iter.next()) {
 					if (image.getId() == id) {
+						ImagesService is = ImagesServiceFactory.getImagesService();
+						is.deleteServingUrl(image.getBlobKey());
+						
 						BlobstoreService bs = BlobstoreServiceFactory.getBlobstoreService();
 						bs.delete(image.getBlobKey());
 						
