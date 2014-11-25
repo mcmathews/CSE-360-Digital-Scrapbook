@@ -27,8 +27,9 @@ Running the AllTests.java test suite will run all the unit tests.
 ###Functional Tests
 
 1. The Functional Tests we're written using Selenium IDE, so this plugin is required for Firefox to run the tests.
-2. In Firefox, go to http://accounts.google.com and sign in with the username: CSE.360.Project.Test.User@gmail.com and the password: mUOkM9$#3c6P8KMXRAWP&59r!JcMQoSaEYWF
-3. Then log out of Google.  
-4. Now open Selenium IDE
-5. Open the test suite in the project folder in /war/tests/FunctionalTestSuite.html
-6. Run the Suite.
+2. In Firefox, make sure to log out of all Google Services before continuing.
+3. In Firefox, go to http://accounts.google.com and sign in with the username: CSE.360.Project.Test.User@gmail.com and the password: mUOkM9$#3c6P8KMXRAWP&59r!JcMQoSaEYWF
+4. Then log out of Google.  
+5. Now open Selenium IDE
+6. Open the test suite in the project folder in /war/tests/FunctionalTestSuite.html
+7. Run the Suite.
