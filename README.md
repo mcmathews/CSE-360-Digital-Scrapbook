@@ -32,4 +32,5 @@ Running the AllTests.java test suite will run all the unit tests.
 4. Then log out of Google.  
 5. Now open Selenium IDE
 6. Open the test suite in the project folder in /war/tests/FunctionalTestSuite.html
-7. Run the Suite.
+7. Make sure to set the slider in the top left corner of the Selenium IDE to "Slow"
+8. Run the Suite.
